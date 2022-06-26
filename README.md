@@ -22,3 +22,13 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+
+### Seed Untuk Roles
+- Setelah migrate, seed dulu, karena untuk pembuatan user harus memiliki role id, jadi harus inisiali data di role dulu baru dari role tersebut kita gunakakan id-nya untuk pembuatan user (nantinya dapat token auth untuk login)
+
+reset migrate database
+> rake db:migrade:redo
+
+seed
+> rake db:seed
