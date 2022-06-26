@@ -45,6 +45,9 @@ gem "bootsnap", require: false
 # Password hashing function using bcrypt
 gem "bcrypt"
 
+# Json Web Token for create Token Authentication
+gem "jwt"
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 
