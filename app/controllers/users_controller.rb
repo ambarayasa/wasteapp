@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+    # before_action :authorize (jangan disini,di semua controller keknya)
 
     def create
         @user = User.create(user_params)
