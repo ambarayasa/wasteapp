@@ -5,4 +5,6 @@ Rails.application.routes.draw do
   # root "articles#index"
 
   resource :user, only: [:create]
+
+  resources :depots
 end
