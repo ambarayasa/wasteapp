@@ -1,6 +1,8 @@
 require 'jwt'
 
 class ApplicationController < ActionController::API
+    # Check token
+    before_action :authorize
 
     def encode_token(payload, exp = 1.hours.from_now)
         payload[:exp] = exp.to_i
