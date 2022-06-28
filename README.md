@@ -32,3 +32,24 @@ reset migrate database
 
 seed
 > rake db:seed
+
+### crete user
+- untuk menambahkan user dapat menggunakan postman.
+- post ke /user
+- letakan value ke dalam body->raw->JSON
+
+format post JSON untuk create user
+```
+{
+    "user":{
+        "username" : "johndoe",
+        "password_digest": "test123",
+        "email": "johndoe@gmail.com",
+        "name":"John Doe",
+        "address":"jakarta",
+        "gender":"male",
+        "balance":"0",
+        "role_id":1
+    }
+}
+```
