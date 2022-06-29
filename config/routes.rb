@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   resource :user, only: [:create]
 
   resources :depots
+  resources :categories
+  resources :wastes
 
   resource :profile, only: [:show]
 end
