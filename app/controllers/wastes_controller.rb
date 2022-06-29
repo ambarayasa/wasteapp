@@ -41,7 +41,7 @@ class WastesController < ApplicationController
     }
   end
 
-  def delete
+  def destroy
     @waste.destroy
 
     render json: 200
