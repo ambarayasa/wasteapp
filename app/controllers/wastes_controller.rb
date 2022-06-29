@@ -49,7 +49,7 @@ class WastesController < ApplicationController
 
   private
   def waste_params
-    params.require(:waste).permit(:name, :descriptions, :price, :category_id)
+    params.require(:wastes).permit(:name, :descriptions, :price, :category_id)
   end
 
   def set_waste
