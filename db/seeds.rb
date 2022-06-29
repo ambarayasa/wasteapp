@@ -12,7 +12,7 @@ Role.create(role: "Admin")
 # Dummy user
 User.create(
     username: "JohnDoe",
-    password_digest: "test123",
+    password: "test123",
     email: "johndoe@gmail.com",
     name: "John Doe",
     address: "Jl. Dreamwwalking",
@@ -23,7 +23,7 @@ User.create(
 
 Depot.create(
     name: "Bank Sampah Cempaka",
-    address: "Jl. Kemayoran Utara No.8, Jakarta"
+    address: "Jl. Kemayoran Utara No.8, RT.5/RW.5 10620 Daerah Khusus Ibukota Jakarta Daerah Khusus Ibukota Jakarta"
 )
 
 categories = Category.create([
