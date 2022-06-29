@@ -20,3 +20,9 @@ User.create(
     balance: "0",
     role_id: 1
 )
+
+# Dummy depot
+Depot.create(
+    name: "Bank Sampah Cempaka"
+    address: "Jl. Kemayoran Utara No.8, RT.5/RW.5 10620 Daerah Khusus Ibukota Jakarta Daerah Khusus Ibukota Jakarta"
+)
