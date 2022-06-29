@@ -40,6 +40,8 @@ class CategoriesController < ApplicationController
 
   def destroy
     @category.destroy
+
+    render json: 200
   end
 
   private
