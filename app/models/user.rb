@@ -15,4 +15,5 @@ class User < ApplicationRecord
           :updated_at => updated_at
         }
     end
+    
 end

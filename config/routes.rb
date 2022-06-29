@@ -5,10 +5,15 @@ Rails.application.routes.draw do
   # root "articles#index"
 
   resource :user, only: [:create]
+  
+  # Login
+  post '/login', to: 'users#login'
 
   post '/login', to: 'users#login'
 
   resources :depots
+  resources :categories
+  resources :wastes
 
   resource :profile, only: [:show]
 end
