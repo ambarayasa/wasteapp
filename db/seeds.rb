@@ -8,3 +8,15 @@
 
 Role.create(role: "User")
 Role.create(role: "Admin")
+
+# Dummy user
+User.create(
+    username: "JohnDoe",
+    password_digest: "test123",
+    email: "johndoe@gmail.com",
+    name: "John Doe",
+    address: "Jl. Dreamwwalking",
+    gender: "Unknown",
+    balance: "0",
+    role_id: 1
+)
