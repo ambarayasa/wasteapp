@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   post '/login', to: 'users#login'
 
   resources :depots
+  resources :categories
+  resources :wastes
 
   resource :profile, only: [:show]
 end

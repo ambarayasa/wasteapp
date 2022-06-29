@@ -21,8 +21,29 @@ User.create(
     role_id: 1
 )
 
-# Dummy depot
 Depot.create(
     name: "Bank Sampah Cempaka",
     address: "Jl. Kemayoran Utara No.8, RT.5/RW.5 10620 Daerah Khusus Ibukota Jakarta Daerah Khusus Ibukota Jakarta"
 )
+
+categories = Category.create([
+    { name: "Organic" }, 
+    { name: "Plastic" },
+    { name: "Glass" },
+])
+
+Waste.create(
+    name: "Plastic bottles",
+    descriptions: "Bottles with plastic materials commonly used to store drinking water",
+    price: 200.0,
+    category: categories.second,
+
+)
+
+Waste.create(
+    name: "Bananan Leaf",
+    descriptions: "Leaf of the banana plant",
+    price: 100.0,
+    category: categories.first
+)
+
