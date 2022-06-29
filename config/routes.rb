@@ -6,6 +6,8 @@ Rails.application.routes.draw do
 
   resource :user, only: [:create]
 
+  post '/login', to: 'users#login'
+
   resources :depots
 
   resource :profile, only: [:show]
