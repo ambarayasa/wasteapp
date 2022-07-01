@@ -73,7 +73,7 @@ class CategoriesController < ApplicationController
       render json: {
         status: "false",
         code: 404,
-        message: "Failed to update data"
+        message: "Failed to delete data"
       }
     end
   end
