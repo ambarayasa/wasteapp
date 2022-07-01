@@ -68,7 +68,6 @@ class DepotsController < ApplicationController
         status: "true",
         code: 200,
         message: "Sucessfully deleted data",
-        data: @category
       }
     else
       render json: {
