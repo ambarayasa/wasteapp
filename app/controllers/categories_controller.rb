@@ -5,7 +5,7 @@ class CategoriesController < ApplicationController
     @categories = Category.all
 
     render json: {
-        categories: @categories
+        data: @categories
     }
   end
 
@@ -16,9 +16,20 @@ class CategoriesController < ApplicationController
     @category = Category.new(category_params)
     @category.save
 
-    render json: {
-        category: @category
-    }
+    if @category.save
+        render json: {
+          status: "true",
+          code: 200,
+          message: "Sucessfully added data",
+          data: @category
+        }
+      else
+        render json: {
+          status: "false",
+          code: 404,
+          message: "Failed to add data"
+        }
+    end
   end
 
   def edit
@@ -27,21 +38,44 @@ class CategoriesController < ApplicationController
   def update
     @category.update(category_params)
 
-    render json: {
-        category: @category
-    }
+    if @category.update(category_params)
+      render json: {
+        status: "true",
+        code: 200,
+        message: "Sucessfully updated data",
+        data: @category
+      }
+    else
+      render json: {
+        status: "false",
+        code: 404,
+        message: "Failed to update data"
+      }
+    end
   end
 
   def show
     render json: {
-        category: @category
+        data: @category
     }
   end
 
   def destroy
     @category.destroy
 
-    render json: 200
+    if @category.destroy
+      render json: {
+        status: "true",
+        code: 200,
+        message: "Sucessfully deleted data"
+      }
+    else
+      render json: {
+        status: "false",
+        code: 404,
+        message: "Failed to delete data"
+      }
+    end
   end
 
   private

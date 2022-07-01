@@ -1,5 +1,5 @@
 class DepotsController < ApplicationController
-  before_action :set_depot, only: %i[ show edit update destroy]
+  before_action :set_depot, only: %i[ show edit update destroy ]
 
   def index
     @depots = Depot.all
@@ -10,16 +10,26 @@ class DepotsController < ApplicationController
   end
 
   def new
-    @depot = Depot.new
   end
 
   def create
     @depot = Depot.new(depot_params)
     @depot.save
 
-    render json: {
-      depot: @depot
-    }
+    if @depot.save
+      render json: {
+        status: "true",
+        code: 200,
+        message: "Sucessfully added data",
+        data: @depot
+      }
+    else
+      render json: {
+        status: "false",
+        code: 404,
+        message: "Failed to add data"
+      }
+    end
   end
 
   def edit
@@ -28,9 +38,20 @@ class DepotsController < ApplicationController
   def update
     @depot.update(depot_params)
 
-    render json: {
-      depot: @depot
-    }
+    if @depot.update(depot_params)
+      render json: {
+        status: "true",
+        code: 200,
+        message: "Sucessfully updated data",
+        data: @depot
+      }
+    else
+      render json: {
+        status: "false",
+        code: 404,
+        message: "Failed to update data"
+      }
+    end
   end
 
   def show
@@ -41,7 +62,20 @@ class DepotsController < ApplicationController
 
   def destroy
     @depot.destroy
-    render json: 200
+    
+    if @depot.destroy
+      render json: {
+        status: "true",
+        code: 200,
+        message: "Sucessfully deleted data",
+      }
+    else
+      render json: {
+        status: "false",
+        code: 404,
+        message: "Failed to delete data"
+      }
+  end
   end
 
   private
