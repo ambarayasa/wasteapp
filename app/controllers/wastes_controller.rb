@@ -16,9 +16,20 @@ class WastesController < ApplicationController
     @waste = Waste.new(waste_params)
     @waste.save
 
-    render json: {
-      waste: @waste
-    }
+    if @waste.save
+      render json: {
+        status: "true",
+        code: 200,
+        message: "Sucessfully added data",
+        data: @waste
+      }
+    else
+      render json: {
+        status: "false",
+        code: 404,
+        message: "Failed to add data"
+      }
+    end
   end
 
   def edit
@@ -27,9 +38,20 @@ class WastesController < ApplicationController
   def update
     @waste.update(waste_params)
 
-    render json: {
-      waste: @waste
-    }
+    if @waste.update(waste_params)
+      render json: {
+        status: "true",
+        code: 200,
+        message: "Sucessfully updated data",
+        data: @waste
+      }
+    else
+      render json: {
+        status: "false",
+        code: 404,
+        message: "Failed to update data"
+      }
+    end
   end
 
   def show
@@ -44,7 +66,19 @@ class WastesController < ApplicationController
   def destroy
     @waste.destroy
 
-    render json: 200
+    if @waste.destroy
+      render json: {
+        status: "true",
+        code: 200,
+        message: "Sucessfully deleted data",
+      }
+    else
+      render json: {
+        status: "false",
+        code: 404,
+        message: "Failed to delete data"
+      }
+    end
   end
 
   private
