@@ -38,7 +38,7 @@ class CategoriesController < ApplicationController
   def update
     @category.update(category_params)
 
-    if @category.update
+    if @category.update(category_params)
       render json: {
         status: "true",
         code: 200,
