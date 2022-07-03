@@ -48,6 +48,9 @@ gem "bcrypt"
 # Json Web Token for create Token Authentication
 gem "jwt"
 
+# API guard for JWT implement
+gem 'api_guard'
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 

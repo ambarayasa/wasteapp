@@ -1,4 +1,5 @@
 class DepotsController < ApplicationController
+  before_action :authenticate_and_set_user
   before_action :set_depot, only: %i[ show edit update destroy ]
 
   def index

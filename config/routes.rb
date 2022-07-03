@@ -4,12 +4,14 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
 
-  resource :user, only: [:create]
-  
-  # Login
-  post '/login', to: 'users#login'
-
-  post '/login', to: 'users#login'
+   # API_Guard
+   # https://github.com/Gokul595/api_guard#overriding-defaults
+  api_guard_routes for: 'users', controller: { 
+    registration: 'users/registration',
+    authentication: 'users/authentication',
+    # passwords: 'users/passwords',
+    tokens: 'users/tokens'
+  }
 
   resources :depots
   resources :categories

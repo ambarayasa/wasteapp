@@ -1,5 +1,6 @@
 class ProfilesController < ApplicationController
-    before_action :authorize
+    before_action :authenticate_and_set_user
+    
     def show
         @user = User.find_by(id: 1)
         render json: {
