@@ -46,31 +46,31 @@ Selanjutnya untuk Alur User, untuk saat ini ada beberapa seperti Create, SignIn,
 
 > ### Create
 >>untuk Create ini menggunakan URL POST:
->>``http://127.0.0.1:3000/users/sign_up`` dimana nanti akan meminta parameter berupa JSON yang berisi "user" berserta params yang dibutuhkan.
+>>``http://127.0.0.1:3000/users/sign_up`` dimana nanti akan meminta parameter berupa JSON yang berisi "user" berserta params yang dibutuhkan. <br>
 ![1_create!](/public/docs/images/1_create.PNG)
-yang nantinya akan memberikan response seperti ini jika berhasil:
+>> <br> yang nantinya akan memberikan response seperti ini jika berhasil:<br>
 ![2_create!](/public/docs/images/2_create.PNG)
 
 > ### SignIn
->>Setelah berhasil membuat akun, selanjutnya untuk login bisa dengan menggunakan URL POST: ``http://127.0.0.1:3000/users/sign_in`` dan params yang dibutuhkan seperti ini.
+>>Setelah berhasil membuat akun, selanjutnya untuk login bisa dengan menggunakan URL POST: ``http://127.0.0.1:3000/users/sign_in`` dan params yang dibutuhkan seperti ini. <br>
 ![3_signin!](/public/docs/images/3_signin.PNG)
->>Selanjutnya, response yang diberikan seperti berikut
+>> <br>Selanjutnya, response yang diberikan seperti berikut<br>
 ![4_signin!](/public/docs/images/4_signin.PNG)
 
 > ### SignOut
->>Untuk Logout bisa dengan menggunakan URL DELETE: ``http://127.0.0.1:3000/users/sign_out`` yang dimana tidak ada params yang diberikan, tetapi harus memasukan token (dalam hal ini ``"Bearer " + token``) seperti ini.
+>>Untuk Logout bisa dengan menggunakan URL DELETE: ``http://127.0.0.1:3000/users/sign_out`` yang dimana tidak ada params yang diberikan, tetapi harus memasukan token (dalam hal ini ``"Bearer " + token``) seperti ini.<br>
 ![5_signout!](/public/docs/images/5_signout.PNG)
->>Maka nanti response yang diberikan.
+>> <br>Maka nanti response yang diberikan.<br>
 ![6_signout!](/public/docs/images/6_signout.PNG)
 
 > ### Refresh Token
 >> untuk refresh token ini digunakan jika token expired, dengan menggunakan refresh_token yang telah diberikan ketika create user atau login.
 >> Dengan mengunjugi URL POST : ``http://127.0.0.1:3000/users/tokens`` dengan params **Bearer Token** dan juga **Refresh-Token** pada Header. seperti ini:
->> <br> untuk token
+>> <br> untuk token<br>
 ![5_signout!](/public/docs/images/5_signout.PNG)
->> <br> untuk Refresh-Token pada Header
+>> <br> untuk Refresh-Token pada Header<br>
 ![7_refresh_token!](/public/docs/images/7_refresh_token.PNG)
->> <br> jika berhasil, maka response yang dihasilkan akan seperti ini:
+>> <br> jika berhasil, maka response yang dihasilkan akan seperti ini:<br>
 ![8_refresh_token!](/public/docs/images/8_refresh_token.PNG)
 
 
