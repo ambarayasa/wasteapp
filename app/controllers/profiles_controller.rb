@@ -4,7 +4,9 @@ class ProfilesController < ApplicationController
     def show
         @user = User.find_by(id: 1)
         render json: {
-            profile: {
+            status: "true",
+            code: 200,
+            data: {
                 name: @user.name,
                 username: @user.username,
                 email: printCensoredEmail(@user.email),
