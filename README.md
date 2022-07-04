@@ -78,3 +78,35 @@ Selanjutnya untuk Alur User, untuk saat ini ada beberapa seperti Create, SignIn,
 
 
 
+### Profile
+Untuk mendapatkan detail profile dapat melakukan GET pada route alamat `https://127/0/0/1:3000/profile` dengan params sebagai berikut. pastikan juga token barear sudah di isi.
+```
+{
+    "email": "johndoe1@gmail.com"
+}
+```
+
+kemudian akan mendapatkan output sebagai berikut
+
+```
+{
+    "status": "true",
+    "code": 200,
+    "data": {
+        "name": "John Doe",
+        "username": "johndoe1",
+        "email": "jo******@gmail.com",
+        "address": "jakarta",
+        "balance": "Rp.0.0",
+        "role": "User"
+    }
+}
+```
+
+Example:
+<details>
+  <summary>Screenshot</summary>
+  
+  ![9_get_profile!](/public/docs/images/9_get_profile.png)
+  
+</details>
