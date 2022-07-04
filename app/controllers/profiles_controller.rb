@@ -2,7 +2,7 @@ class ProfilesController < ApplicationController
     before_action :authenticate_and_set_user
     
     def show
-        @user = User.find_by(id: 1)
+        @user = User.find_by(email: params[:email].downcase.strip)
         render json: {
             status: "true",
             code: 200,
