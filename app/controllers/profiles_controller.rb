@@ -2,19 +2,26 @@ class ProfilesController < ApplicationController
     before_action :authenticate_and_set_user
     
     def show
-        @user = User.find_by(email: params[:email].downcase.strip)
-        render json: {
-            status: "true",
-            code: 200,
-            data: {
-                name: @user.name,
-                username: @user.username,
-                email: printCensoredEmail(@user.email),
-                address: @user.address,
-                balance: printBalance(@user.balance),
-                role: printRole(@user.role_id)
-            }
-        }, status: :ok
+        if @user = User.find_by(email: params[:email].downcase.strip)
+            render json: {
+                status: "true",
+                code: 200,
+                data: {
+                    name: @user.name,
+                    username: @user.username,
+                    email: printCensoredEmail(@user.email),
+                    address: @user.address,
+                    balance: printBalance(@user.balance),
+                    role: printRole(@user.role_id)
+                }
+            }, status: :ok
+        else
+            render json: {
+                status: false,
+                code: 404,
+                message: "profile not found"
+            }, status: :not_found
+        end
     end
 
     private
