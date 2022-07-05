@@ -18,4 +18,8 @@ Rails.application.routes.draw do
   resources :wastes
 
   resource :profile, only: [:show]
+  namespace :balances do
+    patch :add_balance
+    patch :withdraw_balance
+  end
 end
