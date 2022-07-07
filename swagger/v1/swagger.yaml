@@ -4,6 +4,158 @@ info:
   title: API V1
   version: v1
 paths:
+  "/depots":
+    get:
+      summary: Retrieves all depots
+      tags:
+      - depots
+      responses:
+        '200':
+          description: depots found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  depots:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        name:
+                          type: string
+                        address:
+                          type: string
+    post:
+      summary: Create new depot
+      tags:
+      - depots
+      parameters: []
+      responses:
+        '200':
+          description: Sucessfully added data
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    properties:
+                      name:
+                        type: string
+                      address:
+                        type: string
+                required:
+                - name
+                - address
+        '404':
+          description: Failed to add data
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                address:
+                  type: string
+              required:
+              - name
+              - address
+  "/depots/{id}":
+    get:
+      summary: Find depot by id
+      tags:
+      - depots
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Sucessfully find data
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  depots:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        name:
+                          type: string
+                        address:
+                          type: string
+        '404':
+          description: Failed to find data
+    put:
+      summary: Update depot by id
+      tags:
+      - depots
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Sucessfully updated data
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  depots:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        name:
+                          type: string
+                        address:
+                          type: string
+        '404':
+          description: Failed to update data
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                address:
+                  type: string
+              required:
+              - name
+              - address
+    delete:
+      summary: Delete depot by id
+      tags:
+      - depots
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Sucessfully deleted data
+        '404':
+          description: Failed to delete data
   "/profile":
     get:
       summary: Retrieves a profile
