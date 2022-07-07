@@ -1,0 +1,58 @@
+---
+openapi: 3.0.1
+info:
+  title: API V1
+  version: v1
+paths:
+  "/profile":
+    get:
+      summary: Retrieves a profile
+      tags:
+      - profile
+      parameters: []
+      responses:
+        '200':
+          description: Profile found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    properties:
+                      name:
+                        type: string
+                      username:
+                        type: string
+                      email:
+                        type: string
+                      address:
+                        type: string
+                      balance:
+                        type: float
+                      role:
+                        type: string
+                required:
+                - name
+                - username
+                - email
+                - address
+                - balance
+                - role
+        '404':
+          description: Profile not found
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+              required:
+              - email
+servers:
+- url: https://{defaultHost}
+  variables:
+    defaultHost:
+      default: www.example.com
