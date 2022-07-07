@@ -51,6 +51,9 @@ gem "jwt"
 # API guard for JWT implement
 gem 'api_guard'
 
+# rswag
+gem "rswag"
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 
