@@ -54,6 +54,9 @@ gem 'api_guard'
 # rswag
 gem "rswag"
 
+# Prettier
+gem "prettier"
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 
