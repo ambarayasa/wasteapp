@@ -4,6 +4,139 @@ info:
   title: API V1
   version: v1
 paths:
+  "/categories":
+    get:
+      summary: Retrieves all categories
+      tags:
+      - categories
+      responses:
+        '200':
+          description: categories found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        name:
+                          type: string
+    post:
+      summary: Create new category
+      tags:
+      - categories
+      parameters: []
+      responses:
+        '200':
+          description: Sucessfully added data
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    properties:
+                      id:
+                        type: integer
+                      name:
+                        type: string
+                required:
+                - name
+        '404':
+          description: Failed to add data
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+              required:
+              - name
+  "/categories/{id}":
+    get:
+      summary: Find category by id
+      tags:
+      - categories
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Sucessfully find data
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    properties:
+                      id:
+                        type: integer
+                      name:
+                        type: string
+        '404':
+          description: Failed to find data
+    put:
+      summary: Update category by id
+      tags:
+      - categories
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Sucessfully updated data
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    properties:
+                      id:
+                        type: integer
+                      name:
+                        type: string
+        '404':
+          description: Failed to update data
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+              required:
+              - name
+    delete:
+      summary: Delete category by id
+      tags:
+      - categories
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Sucessfully deleted data
+        '404':
+          description: Failed to delete data
   "/depots":
     get:
       summary: Retrieves all depots
@@ -43,6 +176,8 @@ paths:
                 properties:
                   data:
                     properties:
+                      id:
+                        type: integer
                       name:
                         type: string
                       address:
@@ -85,16 +220,13 @@ paths:
                 type: object
                 properties:
                   depots:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        id:
-                          type: integer
-                        name:
-                          type: string
-                        address:
-                          type: string
+                    properties:
+                      id:
+                        type: integer
+                      name:
+                        type: string
+                      address:
+                        type: string
         '404':
           description: Failed to find data
     put:
@@ -115,17 +247,14 @@ paths:
               schema:
                 type: object
                 properties:
-                  depots:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        id:
-                          type: integer
-                        name:
-                          type: string
-                        address:
-                          type: string
+                  data:
+                    properties:
+                      id:
+                        type: integer
+                      name:
+                        type: string
+                      address:
+                        type: string
         '404':
           description: Failed to update data
       requestBody:

@@ -1,15 +1,15 @@
 require "swagger_helper"
 
-RSpec.describe "Depots API", type: :request do
-  path "/depots" do
-    get "Retrieves all depots" do
-      tags "depots"
+RSpec.describe "Categories API", type: :request do
+  path "/categories" do
+    get "Retrieves all categories" do
+      tags "categories"
 
       produces "application/json"
-      response "200", "depots found" do
+      response "200", "categories found" do
         schema type: :object,
                properties: {
-                 depots: {
+                 data: {
                    type: :array,
                    items: {
                      type: :object,
@@ -19,37 +19,31 @@ RSpec.describe "Depots API", type: :request do
                        },
                        name: {
                          type: :string
-                       },
-                       address: {
-                         type: :string
                        }
                      }
                    }
                  }
                }
 
-        let(:depots) { create(:depots) }
+        let(:categories) { create(:categories) }
         run_test!
       end
     end
 
-    post "Create new depot" do
-      tags "depots"
+    post "Create new category" do
+      tags "categories"
 
       consumes "application/json"
-      parameter name: :depots,
+      parameter name: :categories,
                 in: :body,
                 schema: {
                   type: :object,
                   properties: {
                     name: {
                       type: :string
-                    },
-                    address: {
-                      type: :string
                     }
                   },
-                  required: %w[name address]
+                  required: ["name"]
                 }
 
       produces "application/json"
@@ -63,78 +57,69 @@ RSpec.describe "Depots API", type: :request do
                      },
                      name: {
                        type: :string
-                     },
-                     address: {
-                       type: :string
                      }
                    }
                  }
                },
-               required: %w[name address]
+               required: ["name"]
 
-        let(:depots) { create(:depots) }
+        let(:categories) { create(:categories) }
         run_test!
       end
 
       response "404", "Failed to add data" do
-        let(:depots) { "invalid" }
+        let(:categories) { "invalid" }
         run_test!
       end
     end
   end
 
-  path "/depots/{id}" do
-    get "Find depot by id" do
-      tags "depots"
+  path "/categories/{id}" do
+    get "Find category by id" do
+      tags "categories"
       parameter name: :id, in: :path, type: :integer
 
       produces "application/json"
       response "200", "Sucessfully find data" do
         schema type: :object,
                properties: {
-                 depots: {
+                 data: {
                    properties: {
                      id: {
                        type: :integer
                      },
                      name: {
                        type: :string
-                     },
-                     address: {
-                       type: :string
                      }
                    }
                  }
                }
 
-        let(:depots) { create(:depots) }
+        let(:categories) { create(:categories) }
         run_test!
       end
 
       response "404", "Failed to find data" do
-        let(:depots) { "invalid" }
+        let(:categories) { "invalid" }
         run_test!
       end
     end
 
-    put "Update depot by id" do
-      tags "depots"
+    put "Update category by id" do
+      tags "categories"
       parameter name: :id, in: :path, type: :integer
 
       consumes "application/json"
-      parameter name: :depots,
+      parameter name: :categories,
                 in: :body,
                 schema: {
                   type: :object,
                   properties: {
                     name: {
                       type: :string
-                    },
-                    address: {
-                      type: :string
                     }
                   },
-                  required: %w[name address]
+                  required: ["name"]
                 }
 
       produces "application/json"
@@ -148,36 +133,33 @@ RSpec.describe "Depots API", type: :request do
                      },
                      name: {
                        type: :string
-                     },
-                     address: {
-                       type: :string
                      }
                    }
                  }
                }
 
-        let(:depots) { create(:depots) }
+        let(:categories) { create(:categories) }
         run_test!
       end
 
       response "404", "Failed to update data" do
-        let(:depots) { "invalid" }
+        let(:categories) { "invalid" }
         run_test!
       end
     end
 
-    delete "Delete depot by id" do
-      tags "depots"
+    delete "Delete category by id" do
+      tags "categories"
       parameter name: :id, in: :path, type: :integer
 
       produces "application/json"
       response "200", "Sucessfully deleted data" do
-        let(:depots) { create(:depots) }
+        let(:categories) { create(:categories) }
         run_test!
       end
 
       response "404", "Failed to delete data" do
-        let(:depots) { "invalid" }
+        let(:categories) { "invalid" }
         run_test!
       end
     end
