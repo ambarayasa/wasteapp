@@ -176,6 +176,8 @@ paths:
                 properties:
                   data:
                     properties:
+                      id:
+                        type: integer
                       name:
                         type: string
                       address:
@@ -218,16 +220,13 @@ paths:
                 type: object
                 properties:
                   depots:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        id:
-                          type: integer
-                        name:
-                          type: string
-                        address:
-                          type: string
+                    properties:
+                      id:
+                        type: integer
+                      name:
+                        type: string
+                      address:
+                        type: string
         '404':
           description: Failed to find data
     put:
@@ -248,17 +247,14 @@ paths:
               schema:
                 type: object
                 properties:
-                  depots:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        id:
-                          type: integer
-                        name:
-                          type: string
-                        address:
-                          type: string
+                  data:
+                    properties:
+                      id:
+                        type: integer
+                      name:
+                        type: string
+                      address:
+                        type: string
         '404':
           description: Failed to update data
       requestBody:
