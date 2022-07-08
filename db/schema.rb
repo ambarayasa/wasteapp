@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_07_03_062153) do
+ActiveRecord::Schema[7.0].define(version: 2022_07_08_045151) do
   create_table "categories", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -42,11 +42,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_03_062153) do
 
   create_table "transaction_details", force: :cascade do |t|
     t.integer "quantity"
-    t.float "subtotal"
+    t.float "subtotal", default: 0.0
     t.integer "transaction_id", null: false
     t.integer "waste_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.float "unit_price"
     t.index ["transaction_id"], name: "index_transaction_details_on_transaction_id"
     t.index ["waste_id"], name: "index_transaction_details_on_waste_id"
   end
@@ -54,7 +55,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_03_062153) do
   create_table "transactions", force: :cascade do |t|
     t.string "date"
     t.text "descriptions"
-    t.float "total"
+    t.float "total", default: 0.0
     t.integer "user_id", null: false
     t.integer "depot_id", null: false
     t.datetime "created_at", null: false

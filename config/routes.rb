@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   resources :depots
   resources :categories
   resources :wastes
+  resources :transactions
 
   resource :profile, only: [:show]
   namespace :balances do
