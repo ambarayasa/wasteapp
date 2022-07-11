@@ -332,6 +332,188 @@ paths:
                   type: string
               required:
               - email
+  "/wastes":
+    get:
+      summary: Retrieves all wastes
+      tags:
+      - wastes
+      responses:
+        '200':
+          description: wastes found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  wastes:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        name:
+                          type: string
+                        descriptions:
+                          type: string
+                        price:
+                          type: float
+                        category_id:
+                          type: integer
+    post:
+      summary: Create new waste
+      tags:
+      - wastes
+      parameters: []
+      responses:
+        '200':
+          description: Sucessfully added data
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    properties:
+                      id:
+                        type: integer
+                      name:
+                        type: string
+                      descriptions:
+                        type: string
+                      price:
+                        type: float
+                      category_id:
+                        type: integer
+                required:
+                - name
+                - address
+        '404':
+          description: Failed to add data
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                descriptions:
+                  type: string
+                price:
+                  type: float
+                category_id:
+                  type: integer
+              required:
+              - name
+              - address
+  "/wastes/{id}":
+    get:
+      summary: Find waste by id
+      tags:
+      - wastes
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Sucessfully find data
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  wastes:
+                    properties:
+                      id:
+                        type: integer
+                      name:
+                        type: string
+                      descriptions:
+                        type: string
+                      price:
+                        type: float
+                      category_id:
+                        type: integer
+                  category:
+                    properties:
+                      id:
+                        type: integer
+                      name:
+                        type: string
+        '404':
+          description: Failed to find data
+    put:
+      summary: Update waste by id
+      tags:
+      - wastes
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Sucessfully updated data
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    properties:
+                      id:
+                        type: integer
+                      name:
+                        type: string
+                      descriptions:
+                        type: string
+                      price:
+                        type: float
+                      category_id:
+                        type: integer
+        '404':
+          description: Failed to update data
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                name:
+                  type: string
+                descriptions:
+                  type: string
+                price:
+                  type: float
+                category_id:
+                  type: integer
+              required:
+              - name
+              - descriptions
+              - price
+              - category_id
+    delete:
+      summary: Delete waste by id
+      tags:
+      - wastes
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Sucessfully deleted data
+        '404':
+          description: Failed to delete data
 servers:
 - url: https://{defaultHost}
   variables:
