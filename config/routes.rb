@@ -21,8 +21,4 @@ Rails.application.routes.draw do
   resources :transactions
 
   resource :profile, only: [:show]
-  namespace :balances do
-    patch :add_balance
-    patch :withdraw_balance
-  end
 end
