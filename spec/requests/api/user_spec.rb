@@ -47,8 +47,6 @@ RSpec.describe 'api/user', type: :request do
       response "200", "Sucessfully Create User" do
         schema type: :object,
                properties: {
-                 code: :integer,
-                 message: :string,
                  data: {
                    type: :object,
                    properties: {
@@ -63,28 +61,18 @@ RSpec.describe 'api/user', type: :request do
                      },
                    }
                  },
-                 token: :string,
-                 refresh_token: :string,
+                 token: {
+                    type: :string,
+                 },
+                 refresh_token: {
+                    type: :string
+                 },
                }
         let(:user) { create(:user) }
         run_test!
       end
 
       response "422", "Failed to Create User!" do
-        schema type: :object,
-               properties: {
-                 data: {
-                   type: :object,
-                   properties: {
-                     email: {
-                       type: :array
-                     },
-                     username: {
-                       type: :array
-                     }
-                   }
-                 }
-               }
         let(:user) { "invalid" }
         run_test!
       end
@@ -113,8 +101,6 @@ RSpec.describe 'api/user', type: :request do
       response "200", "Log in Sucessfully" do
         schema type: :object,
                properties: {
-                 code: :integer,
-                 message: :string,
                  data: {
                    type: :object,
                    properties: {
@@ -129,8 +115,12 @@ RSpec.describe 'api/user', type: :request do
                      },
                    }
                  },
-                 token: :string,
-                 refresh_token: :string,
+                 token: {
+                    type: :string,
+                 },
+                 refresh_token: {
+                    type: :string
+                 },
                }
         let(:user) { create(:user) }
         run_test!

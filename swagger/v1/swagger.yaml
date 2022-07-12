@@ -332,6 +332,106 @@ paths:
                   type: string
               required:
               - email
+  "/users/sign_up":
+    post:
+      summary: Create new user
+      tags:
+      - users
+      parameters: []
+      responses:
+        '200':
+          description: Sucessfully Create User
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      email:
+                        type: string
+                      name:
+                        type: string
+                  token:
+                    type: string
+                  refresh_token:
+                    type: string
+        '422':
+          description: Failed to Create User!
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user:
+                  type: object
+                  properties:
+                    username:
+                      type: string
+                    password:
+                      type: string
+                    email:
+                      type: string
+                    name:
+                      type: string
+                    address:
+                      type: string
+                    gender:
+                      type: string
+                    balance:
+                      type: string
+                    role_id:
+                      type: integer
+  "/users/sign_in":
+    post:
+      summary: Sign In
+      tags:
+      - users
+      parameters: []
+      responses:
+        '200':
+          description: Log in Sucessfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      email:
+                        type: string
+                      name:
+                        type: string
+                  token:
+                    type: string
+                  refresh_token:
+                    type: string
+        '422':
+          description: Invalid login Credentials
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                password:
+                  type: string
   "/wastes":
     get:
       summary: Retrieves all wastes
