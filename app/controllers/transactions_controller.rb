@@ -1,4 +1,5 @@
 class TransactionsController < ApplicationController
+    before_action :authenticate_and_set_user
     before_action :set_transaction, only: %i[ show update destroy ]
 
     def index

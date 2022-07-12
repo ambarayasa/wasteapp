@@ -57,6 +57,9 @@ gem "rswag"
 # Prettier
 gem "prettier"
 
+# Email Validator
+gem 'email_validator'
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 
