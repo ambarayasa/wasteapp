@@ -23,6 +23,21 @@ Things you may want to cover:
 
 * ...
 
+# Wasteapp
+Wasteapp is a depot station to recycle waste.
+
+## Database relation
+![database_relation!](/public/docs/images/database-relation.png)
+
+
+## wasteapp flowchart
+
+<details>
+  <summary>Screenshot</summary>
+  
+  ![database_relation!](/public/docs/images/flowchart.png)
+  
+</details>
 
 ## Seed Untuk Roles
 - Setelah migrate, seed dulu, karena untuk pembuatan user harus memiliki role id, jadi harus inisiali data di role dulu baru dari role tersebut kita gunakakan id-nya untuk pembuatan user (nantinya dapat token auth untuk login)
